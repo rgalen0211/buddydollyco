@@ -285,7 +285,11 @@
       gap: 18px;
       flex-wrap: wrap;
     }
-
+.hero-gif {
+  width: 100%;
+  border-radius: 22px;
+  display: block;
+}
     @media (max-width: 820px) {
       .hero-grid,
       .split,
@@ -299,7 +303,7 @@
 
       .hero {
         padding-top: 68px;
-      }
+      }      
     }
   </style>
 </head>
@@ -332,12 +336,8 @@
         </div>
 
         <div class="prototype-card">
-          <div class="image-placeholder">
-            Add prototype render, photo, or short demo GIF here.
-            <br /><br />
-            Keep this visual non-committal until pricing, production, and final design are confirmed.
-          </div>
-        </div>
+  <img src="buddy-demo.gif" alt="Buddy Dolly demo animation" class="hero-gif" />
+</div>
       </div>
     </section>
 
@@ -423,7 +423,7 @@
           <p>
             Join the early interest list for development updates, prototype progress, and future availability announcements.
           </p>
-          <form action="https://formspree.io/f/https://formspree.io/f/xyklqewj" method="POST">
+          <form action="https://formspree.io/f/xyklqewj" method="POST">
             <input type="text" name="name" placeholder="Name" />
             <input type="email" name="email" placeholder="Email address" required />
             <textarea name="message" placeholder="Optional: Tell us how you might use Buddy Dolly"></textarea>
