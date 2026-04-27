@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buddy Dolly Company</title>
+  <meta name="description" content="Buddy Dolly is a developing multi-mode lifting and loading device designed to help move heavy items from ground level to trucks, docks, and elevated surfaces." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --panel-light: #1f2937;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #22c55e;
+      --accent-dark: #16a34a;
+      --border: rgba(255, 255, 255, 0.12);
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.92);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 96px 0 72px;
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.22), transparent 36%),
+        radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.18), transparent 34%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(2.35rem, 5vw, 4.75rem);
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.14rem;
+      max-width: 660px;
+      margin-bottom: 30px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      transition: 0.2s ease;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: #052e16;
+      border-color: var(--accent);
+    }
+
+    .button.primary:hover {
+      background: var(--accent-dark);
+      color: white;
+    }
+
+    .button.secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .prototype-card {
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 22px;
+      background: rgba(17, 24, 39, 0.72);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+    }
+
+    .image-placeholder {
+      min-height: 340px;
+      border: 1px dashed rgba(255, 255, 255, 0.28);
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 28px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    section {
+      padding: 76px 0;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .card h3 {
+      font-size: 1.18rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .status-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .status-item {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .status-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .status-item span {
+      color: var(--muted);
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.16), rgba(59, 130, 246, 0.12));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 34px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      padding: 14px 16px;
+      font-size: 1rem;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(203, 213, 225, 0.72);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      padding: 28px 0;
+      font-size: 0.92rem;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 820px) {
+      .hero-grid,
+      .split,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 68px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#top">Buddy Dolly</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#problem">Problem</a>
+        <a href="#device">Device</a>
+        <a href="#status">Status</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Product in development</div>
+          <h1>A smarter way to move heavy items from ground level to truck height.</h1>
+          <p>
+            Buddy Dolly is a developing multi-mode lifting and loading device designed to help users move heavy items across the ground, position them at a truck or dock, raise them, and transfer them across integrated rollers.
+          </p>
+          <div class="button-row">
+            <a class="button primary" href="#contact">Join the interest list</a>
+            <a class="button secondary" href="#status">View development status</a>
+          </div>
+        </div>
+
+        <div class="prototype-card">
+          <div class="image-placeholder">
+            Add prototype render, photo, or short demo GIF here.
+            <br /><br />
+            Keep this visual non-committal until pricing, production, and final design are confirmed.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem">
+      <div class="container">
+        <div class="section-heading">
+          <h2>The problem is simple: loading is usually harder than moving.</h2>
+          <p>
+            Traditional dollies help move items across the ground, but the difficult part often comes at the destination: lifting, angling, sliding, or forcing heavy objects into a truck, van, dock, or raised platform.
+          </p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <h3>Heavy lifting</h3>
+            <p>Users still often need to physically lift or muscle the item at the loading point.</p>
+          </article>
+          <article class="card">
+            <h3>Awkward transfer</h3>
+            <p>Getting from ground level to bed height can be slow, risky, and inefficient.</p>
+          </article>
+          <article class="card">
+            <h3>Limited tools</h3>
+            <p>Many existing tools solve transport, but not the full load and unload sequence.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="device">
+      <div class="container split">
+        <div class="section-heading">
+          <h2>Buddy is being designed as a multi-mode moving and loading device.</h2>
+          <p>
+            The current concept combines dolly-style transport, a flat cart-like position, integrated rollers, and a lifting mechanism to make loading and unloading more controlled.
+          </p>
+        </div>
+        <div class="status-list">
+          <div class="status-item">
+            <strong>Dolly Mode</strong>
+            <span>Move items in a familiar angled transport position.</span>
+          </div>
+          <div class="status-item">
+            <strong>Cart Mode</strong>
+            <span>Lay the device flatter for ground-level positioning and controlled movement.</span>
+          </div>
+          <div class="status-item">
+            <strong>Load / Unload Mode</strong>
+            <span>Use the lifting and roller concept to help transfer items to or from an elevated surface.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="status">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Development status</h2>
+          <p>
+            Buddy Dolly is currently in prototype and pre-manufacturing development. Final pricing, specifications, production timeline, and availability have not yet been announced.
+          </p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <h3>Prototype concept</h3>
+            <p>A proof-of-concept prototype has been built and is being evaluated for refinement.</p>
+          </article>
+          <article class="card">
+            <h3>Design refinement</h3>
+            <p>The next phase focuses on improving manufacturability, cost, safety, and usability.</p>
+          </article>
+          <article class="card">
+            <h3>Interest list</h3>
+            <p>Early supporters, potential customers, manufacturers, and partners can request updates below.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Stay updated</h2>
+          <p>
+            Join the early interest list for development updates, prototype progress, and future availability announcements.
+          </p>
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <input type="text" name="name" placeholder="Name" />
+            <input type="email" name="email" placeholder="Email address" required />
+            <textarea name="message" placeholder="Optional: Tell us how you might use Buddy Dolly"></textarea>
+            <button class="button primary" type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© 2026 Buddy Dolly Company, LLC. All rights reserved.</span>
+      <span>Patent pending / product in development language can be added when appropriate.</span>
+    </div>
+  </footer>
+</body>
+</html>
