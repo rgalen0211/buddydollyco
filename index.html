@@ -252,7 +252,8 @@
     }
 
     input,
-    textarea {
+    textarea,
+    select {
       width: 100%;
       border: 1px solid var(--border);
       border-radius: 14px;
@@ -424,9 +425,27 @@
             Join the early interest list for development updates, prototype progress, and future availability announcements.
           </p>
           <form action="https://formspree.io/f/xyklqewj" method="POST">
-            <input type="text" name="name" placeholder="Name" />
+            <input type="text" name="name" placeholder="Name" required />
             <input type="email" name="email" placeholder="Email address" required />
+          
+            <p><strong>Optional details (helps me respond better):</strong></p>
+          
+            <label>I'm interested in:</label>
+            <select name="interest">
+              <option value="">Select one (optional)</option>
+              <option value="buy">Buying one</option>
+              <option value="invest">Investing</option>
+              <option value="manufacture">Manufacturing / partnership</option>
+              <option value="distribute">Distribution</option>
+              <option value="other">Other</option>
+            </select>
+          
+            <input type="text" name="company" placeholder="Company (optional)" />
+            <input type="text" name="industry" placeholder="Industry (optional)" />
+            <input type="tel" name="phone" placeholder="Phone (optional)" />
+          
             <textarea name="message" placeholder="Optional: Tell us how you might use Buddy Dolly"></textarea>
+          
             <button class="button primary" type="submit">Send</button>
           </form>
         </div>
