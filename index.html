@@ -3,462 +3,311 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Buddy Dolly Company</title>
-  <meta name="description" content="Buddy Dolly is a developing multi-mode lifting and loading device designed to help move heavy items from ground level to trucks, docks, and elevated surfaces." />
-  <style>
-    :root {
-      --bg: #0f172a;
-      --panel: #111827;
-      --panel-light: #1f2937;
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --accent: #22c55e;
-      --accent-dark: #16a34a;
-      --border: rgba(255, 255, 255, 0.12);
-      --max-width: 1120px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(92%, var(--max-width));
-      margin: 0 auto;
-    }
-
-    header {
-      border-bottom: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.92);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(12px);
-    }
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 0;
-    }
-
-    .logo {
-      font-size: 1.2rem;
-      font-weight: 800;
-      letter-spacing: 0.03em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 22px;
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .hero {
-      padding: 96px 0 72px;
-      background:
-        radial-gradient(circle at top left, rgba(34, 197, 94, 0.22), transparent 36%),
-        radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.18), transparent 34%);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.8rem;
-      margin-bottom: 14px;
-    }
-
-    h1 {
-      font-size: clamp(2.35rem, 5vw, 4.75rem);
-      line-height: 1.05;
-      margin-bottom: 24px;
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 1.14rem;
-      max-width: 660px;
-      margin-bottom: 30px;
-    }
-
-    .button-row {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 999px;
-      font-weight: 700;
-      border: 1px solid var(--border);
-      transition: 0.2s ease;
-    }
-
-    .button.primary {
-      background: var(--accent);
-      color: #052e16;
-      border-color: var(--accent);
-    }
-
-    .button.primary:hover {
-      background: var(--accent-dark);
-      color: white;
-    }
-
-    .button.secondary:hover {
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .prototype-card {
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 22px;
-      background: rgba(17, 24, 39, 0.72);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
-    }
-
-    .image-placeholder {
-      min-height: 340px;
-      border: 1px dashed rgba(255, 255, 255, 0.28);
-      border-radius: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 28px;
-      color: var(--muted);
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    section {
-      padding: 76px 0;
-    }
-
-    .section-heading {
-      max-width: 760px;
-      margin-bottom: 34px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      line-height: 1.15;
-      margin-bottom: 14px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      font-size: 1.05rem;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 24px;
-    }
-
-    .card h3 {
-      font-size: 1.18rem;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: var(--muted);
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 34px;
-      align-items: start;
-    }
-
-    .status-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .status-item {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px;
-    }
-
-    .status-item strong {
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .status-item span {
-      color: var(--muted);
-    }
-
-    .contact-box {
-      background: linear-gradient(135deg, rgba(34, 197, 94, 0.16), rgba(59, 130, 246, 0.12));
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 34px;
-    }
-
-    .contact-box p {
-      color: var(--muted);
-      margin-bottom: 22px;
-    }
-
-    form {
-      display: grid;
-      gap: 12px;
-    }
-
-    input,
-    textarea,
-    select {
-      width: 100%;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--text);
-      padding: 14px 16px;
-      font-size: 1rem;
-    }
-
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    input::placeholder,
-    textarea::placeholder {
-      color: rgba(203, 213, 225, 0.72);
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      padding: 28px 0;
-      font-size: 0.92rem;
-    }
-
-    .footer-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-.hero-gif {
-  width: 100%;
-  border-radius: 22px;
-  display: block;
-}
-    @media (max-width: 820px) {
-      .hero-grid,
-      .split,
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding-top: 68px;
-      }      
-    }
-  </style>
+  <title>Buddy Dolly — Don’t call a friend, grab your Buddy</title>
+  <meta name="description" content="Buddy Dolly is a one-person material-handling device in development, designed to move, raise, load, and unload heavy items. Join the interest list or ask about becoming a distributor." />
+  <link rel="canonical" href="https://buddydollyco.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Buddy Dolly — Don't call a friend, grab your Buddy" />
+  <meta property="og:description" content="A one-person device in development for moving, raising, loading, and unloading heavy items. Distributor conversations now open." />
+  <meta property="og:url" content="https://buddydollyco.com/" />
+  <meta property="og:image" content="https://buddydollyco.com/assets/buddy-demo-poster.jpg" />
+  <meta name="theme-color" content="#eceef1" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preload" href="assets/fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="assets/site.css" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"Buddy Dolly Company, LLC","url":"https://buddydollyco.com/","logo":"https://buddydollyco.com/assets/buddy-logo.png","slogan":"Don't call a friend—grab your Buddy."}
+  </script>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a class="logo" href="#top">Buddy Dolly</a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#problem">Problem</a>
-        <a href="#device">Device</a>
-        <a href="#status">Status</a>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="#top" aria-label="Buddy Dolly home">
+        <img src="assets/buddy-logo.png" alt="" width="34" height="45" />
+        <span>Buddy Dolly</span>
+      </a>
+      <nav id="site-nav" class="nav" aria-label="Primary">
+        <a href="#meet">Meet Buddy</a>
+        <a href="#how">How it works</a>
+        <a href="distributors/">Distributors</a>
+        <a href="#partners">Partners</a>
         <a href="#contact">Contact</a>
       </nav>
+      <a class="btn btn-green btn-sm" href="distributors/">Become a Distributor</a>
+      <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </button>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
         <div>
-          <div class="eyebrow">Product in development</div>
-          <h1>A smarter way to move heavy items from ground level to truck height.</h1>
-          <p>
-            Buddy Dolly is a developing multi-mode lifting and loading device designed to help users move heavy items across the ground, position them at a truck or dock, raise them, and transfer them across integrated rollers.
-          </p>
-          <div class="button-row">
-            <a class="button primary" href="#contact">Join the interest list</a>
-            <a class="button secondary" href="#status">View development status</a>
+          <h1>Don’t call a friend—grab your Buddy.</h1>
+          <p class="hero-lede">Buddy is a one-person moving and loading device. It’s being designed to roll heavy items across the floor, raise them, and slide them onto a truck bed, dock, or platform — without a second set of hands.</p>
+          <div class="cta-row">
+            <a class="btn btn-blue" href="#contact" data-interest="buy">Join the interest list</a>
+            <a class="btn btn-green" href="distributors/">Become a Distributor</a>
           </div>
+          <p class="status-note">Prototype stage. Pricing, specs, and release timing haven’t been announced.</p>
         </div>
-
-        <div class="prototype-card">
-  <img src="buddy-demo.gif" alt="Buddy Dolly demo animation" class="hero-gif" />
-</div>
+        <figure class="viewport">
+          <video autoplay muted loop playsinline preload="metadata" poster="assets/buddy-demo-poster.jpg" aria-label="Animation of the Buddy Dolly prototype changing between upright dolly and flat cart positions">
+            <source src="assets/buddy-demo.webm" type="video/webm" />
+            <source src="assets/buddy-demo.mp4" type="video/mp4" />
+            <img src="assets/buddy-demo-poster.jpg" alt="Buddy Dolly prototype render" />
+          </video>
+          <figcaption>Prototype motion study. Final design may differ.</figcaption>
+          <button class="video-toggle" type="button" aria-label="Pause demo animation"></button>
+        </figure>
       </div>
     </section>
 
-    <section id="problem">
-      <div class="container">
-        <div class="section-heading">
-          <h2>The problem is simple: loading is usually harder than moving.</h2>
-          <p>
-            Traditional dollies help move items across the ground, but the difficult part often comes at the destination: lifting, angling, sliding, or forcing heavy objects into a truck, van, dock, or raised platform.
-          </p>
+    <!-- Problem -->
+    <section class="band dark" id="problem">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Moving it is easy. Loading it is the hard part.</h2>
+          <p>A dolly gets a heavy item to the truck. Then someone has to lift it, tip it, and shove it the last few feet. That’s where backs get hurt, items get dropped, and jobs wait on a second person.</p>
         </div>
-        <div class="cards">
-          <article class="card">
-            <h3>Heavy lifting</h3>
-            <p>Users still often need to physically lift or muscle the item at the loading point.</p>
-          </article>
-          <article class="card">
-            <h3>Awkward transfer</h3>
-            <p>Getting from ground level to bed height can be slow, risky, and inefficient.</p>
-          </article>
-          <article class="card">
-            <h3>Limited tools</h3>
-            <p>Many existing tools solve transport, but not the full load and unload sequence.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="device">
-      <div class="container split">
-        <div class="section-heading">
-          <h2>Buddy is being designed as a multi-mode moving and loading device.</h2>
-          <p>
-            The current concept combines dolly-style transport, a flat cart-like position, integrated rollers, and a lifting mechanism to make loading and unloading more controlled.
-          </p>
-        </div>
-        <div class="status-list">
-          <div class="status-item">
-            <strong>Dolly Mode</strong>
-            <span>Move items in a familiar angled transport position.</span>
+        <div class="ruled">
+          <div>
+            <h3>The lift</h3>
+            <p>Getting from the floor to bed height still comes down to muscle.</p>
           </div>
-          <div class="status-item">
-            <strong>Cart Mode</strong>
-            <span>Lay the device flatter for ground-level positioning and controlled movement.</span>
+          <div>
+            <h3>The transfer</h3>
+            <p>Angling and sliding a load onto a raised surface is slow and awkward.</p>
           </div>
-          <div class="status-item">
-            <strong>Load / Unload Mode</strong>
-            <span>Use the lifting and roller concept to help transfer items to or from an elevated surface.</span>
+          <div>
+            <h3>The helper</h3>
+            <p>Most tools handle transport, not the whole load-and-unload sequence — so you wait for help.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="status">
-      <div class="container">
-        <div class="section-heading">
-          <h2>Development status</h2>
-          <p>
-            Buddy Dolly is currently in prototype and pre-manufacturing development. Final pricing, specifications, production timeline, and availability have not yet been announced.
-          </p>
+    <!-- Meet Buddy -->
+    <section class="band" id="meet">
+      <div class="wrap split">
+        <div class="section-head">
+          <h2>Meet Buddy</h2>
+          <p>Buddy combines a hand truck, a flat cart, and a lift with rollers in one frame. It’s built around one idea: a single person should be able to handle the whole job, from pickup to drop-off.</p>
+          <p class="slogan">Don’t call a friend—<br />grab your Buddy.</p>
         </div>
-        <div class="cards">
-          <article class="card">
-            <h3>Prototype concept</h3>
-            <p>A proof-of-concept prototype has been built and is being evaluated for refinement.</p>
-          </article>
-          <article class="card">
-            <h3>Design refinement</h3>
-            <p>The next phase focuses on improving manufacturability, cost, safety, and usability.</p>
-          </article>
-          <article class="card">
-            <h3>Interest list</h3>
-            <p>Early supporters, potential customers, manufacturers, and partners can request updates below.</p>
-          </article>
+        <ul class="benefits">
+          <li>
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="16" r="8"/><path d="M16 58c0-14 7-22 16-22s16 8 16 22"/></svg>
+            <div><h3>One person, start to finish</h3><p>Designed so one person can pick up, move, raise, and unload without calling in a helper.</p></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 56h32M38 30h22v26"/><rect x="10" y="38" width="16" height="16" rx="2"/><path d="M18 32c0-12 8-16 22-16"/><path d="M34 10l6 6-6 6"/></svg>
+            <div><h3>Floor to tailgate</h3><p>Raises the load toward truck, van, and dock height instead of you lifting it there.</p></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="12" y="12" width="40" height="22" rx="2"/><circle cx="16" cy="44" r="5"/><circle cx="32" cy="44" r="5"/><circle cx="48" cy="44" r="5"/><path d="M8 56h48"/></svg>
+            <div><h3>Slide it, don’t shove it</h3><p>Integrated rollers help transfer the load across instead of dragging it.</p></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6h10M23 6v42h22"/><rect x="29" y="22" width="15" height="24" rx="2"/><circle cx="23" cy="52" r="7"/><circle cx="23" cy="52" r="1.5"/></svg>
+            <div><h3>One tool, not three</h3><p>Dolly, cart, and loading aid in one frame — less to buy, store, and haul around.</p></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="band dark" id="how">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>How it works</h2>
+          <p>Buddy changes position for each stage of the job.</p>
+        </div>
+        <ol class="steps">
+          <li>
+            <span class="num">Step 1</span>
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6h10M23 6v42h22"/><rect x="29" y="22" width="15" height="24" rx="2"/><circle cx="23" cy="52" r="7"/></svg>
+            <h3>Roll it</h3>
+            <p>Dolly mode. Tip the item back and move it like a familiar hand truck.</p>
+          </li>
+          <li>
+            <span class="num">Step 2</span>
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 28v14h52"/><rect x="22" y="24" width="22" height="18" rx="2"/><circle cx="14" cy="50" r="6"/><circle cx="50" cy="51" r="4.5"/></svg>
+            <h3>Lay it down</h3>
+            <p>Cart mode. Bring the frame flatter to position the load at ground level.</p>
+          </li>
+          <li>
+            <span class="num">Step 3</span>
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 28h32M10 52l24-22M10 30l24 22M6 52h32"/><rect x="12" y="12" width="14" height="14" rx="2"/><path d="M42 28h18v26"/><path d="M30 8h14M40 4l4 4-4 4"/></svg>
+            <h3>Raise and transfer</h3>
+            <p>Load mode. Lift to the surface height and roll the item across.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Who it's for -->
+    <section class="band paler" id="uses">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Built for people who load alone</h2>
+          <p>Anyone who regularly gets heavy, awkward items onto or off of a raised surface.</p>
+        </div>
+        <ul class="uses">
+          <li><strong>Movers and haulers</strong><span>Appliances, furniture, and equipment</span></li>
+          <li><strong>Contractors and trades</strong><span>Tools, materials, and job-site gear</span></li>
+          <li><strong>Delivery and logistics</strong><span>Last-mile and box-truck drops</span></li>
+          <li><strong>Facilities and maintenance</strong><span>Moving equipment around a building</span></li>
+          <li><strong>Warehouses and back rooms</strong><span>Docks, shelves, and staging</span></li>
+          <li><strong>Homeowners and farms</strong><span>Pickup beds, trailers, and sheds</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Distributor band -->
+    <section class="dist-band" id="distributors" aria-labelledby="dist-title">
+      <div class="wrap dist-grid">
+        <div>
+          <h2 id="dist-title">Interested in becoming a Buddy Dolly distributor?</h2>
+          <p>We’re starting conversations with distributors, dealers, retailers, and sales reps ahead of launch — established companies and small independent dealers alike.</p>
+          <p class="channels">Regional, national, retail, online, or commercial — let’s talk about what fits.</p>
+        </div>
+        <div>
+          <a class="btn btn-night" href="distributors/">Become a Distributor — let’s talk</a>
         </div>
       </div>
     </section>
 
-    <section id="contact">
-      <div class="container">
-        <div class="contact-box">
-          <h2>Stay updated</h2>
-          <p>
-            Join the early interest list for development updates, prototype progress, and future availability announcements.
-          </p>
-          <form action="https://formspree.io/f/xyklqewj" method="POST">
-            <input type="text" name="name" placeholder="Name" required />
-            <input type="email" name="email" placeholder="Email address" required />
-          
-            <p><strong>Optional details (helps me respond better):</strong></p>
-          
-            <label>I'm interested in:</label>
-            <select name="interest">
-              <option value="">Select one (optional)</option>
-              <option value="buy">Buying one</option>
-              <option value="invest">Investing</option>
-              <option value="manufacture">Manufacturing / partnership</option>
-              <option value="distribute">Distribution</option>
-              <option value="other">Other</option>
-            </select>
-          
-            <input type="text" name="company" placeholder="Company (optional)" />
-            <input type="text" name="industry" placeholder="Industry (optional)" />
-            <input type="tel" name="phone" placeholder="Phone (optional)" />
-          
-            <textarea name="message" placeholder="Optional: Tell us how you might use Buddy Dolly"></textarea>
+    <!-- Partners -->
+    <section class="band" id="partners">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Manufacturing and partnerships</h2>
+          <p>Buddy is moving from prototype toward production. We’re talking with people who can help it get there.</p>
+        </div>
+        <div class="partner-cols">
+          <div>
+            <h3>Manufacturers</h3>
+            <p class="muted">We’re looking for partners for low-volume production that can scale, including:</p>
+            <ul>
+              <li>Tube and steel fabrication, welding</li>
+              <li>Finishing and powder coating</li>
+              <li>Assembly and packaging</li>
+              <li>Design-for-manufacturing input</li>
+            </ul>
+            <a class="btn btn-outline" href="#contact" data-interest="manufacture">Talk manufacturing</a>
+          </div>
+          <div>
+            <h3>Investors and partners</h3>
+            <p class="muted">If you’d like to help bring Buddy to market, or have another kind of partnership in mind, we’d like to hear from you.</p>
+            <ul>
+              <li>Investment conversations</li>
+              <li>Strategic and retail partnerships</li>
+              <li>Licensing and other ideas</li>
+            </ul>
+            <a class="btn btn-outline" href="#contact" data-interest="invest">Start a conversation</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Status -->
+    <section class="band dark" id="status">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Where Buddy is today</h2>
+          <p>We’d rather be straight with you about where things stand.</p>
+        </div>
+        <ol class="timeline">
+          <li class="done"><span class="when">Done</span><h3>Concept</h3><p>Single-person loading device designed. Patent pending.</p></li>
+          <li class="done"><span class="when">Done</span><h3>Prototypes</h3><p>Several working prototypes built and tested with good early feedback.</p></li>
+          <li class="now"><span class="when">Now</span><h3>Refinement</h3><p>Improving manufacturability, cost, safety, and usability. Talking with fabricators and distributors.</p></li>
+          <li><span class="when">Next</span><h3>Production</h3><p>Pricing, final specs, and availability will be announced when they’re set.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Contact (original Formspree form, restyled; same endpoint and fields) -->
+    <section class="band" id="contact">
+      <div class="wrap form-split">
+        <div class="section-head">
+          <h2>Get updates or get in touch</h2>
+          <p>Join the interest list to hear about prototype progress and availability. Manufacturers, investors, and partners can use this form too.</p>
+          <p class="muted">Want to carry or represent Buddy? Use the <a href="distributors/">distributor inquiry form</a> instead.</p>
+        </div>
+        <div class="form-panel">
+          <form class="form" action="https://formspree.io/f/xyklqewj" method="POST" data-enhance>
+            <div class="field">
+              <label for="c-name">Name</label>
+              <input id="c-name" type="text" name="name" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="c-email">Email</label>
+              <input id="c-email" type="email" name="email" autocomplete="email" required />
+            </div>
+            <div class="field full">
+              <label for="c-interest">I’m interested in <span class="opt">(optional)</span></label>
+              <select id="c-interest" name="interest">
+                <option value="">Select one</option>
+                <option value="buy">Buying one</option>
+                <option value="invest">Investing</option>
+                <option value="manufacture">Manufacturing / partnership</option>
+                <option value="distribute">Distribution</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="c-company">Company <span class="opt">(optional)</span></label>
+              <input id="c-company" type="text" name="company" autocomplete="organization" />
+            </div>
+            <div class="field">
+              <label for="c-industry">Industry <span class="opt">(optional)</span></label>
+              <input id="c-industry" type="text" name="industry" />
+            </div>
+            <div class="field full">
+              <label for="c-phone">Phone <span class="opt">(optional)</span></label>
+              <input id="c-phone" type="tel" name="phone" autocomplete="tel" />
+            </div>
+            <div class="field full">
+              <label for="c-message">How might you use Buddy? <span class="opt">(optional)</span></label>
+              <textarea id="c-message" name="message"></textarea>
+            </div>
             <input type="hidden" name="_autoresponse" value="Thanks for reaching out! I’ll follow up shortly. – Ryan, Buddy Dolly">
             <input type="hidden" name="_redirect" value="https://buddydollyco.com/thank-you.html">
-            <button class="button primary" type="submit">Send</button>
+            <div class="form-foot">
+              <button class="btn btn-blue" type="submit">Send</button>
+              <small>Only name and email are required. We’ll reply personally.</small>
+            </div>
           </form>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-row">
-      <span>© 2026 Buddy Dolly Company, LLC. All rights reserved.</span>
-      <span>Patent pending / product in development language can be added when appropriate.</span>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Buddy Dolly Company, LLC</div>
+          <div><a href="mailto:ryan.galen@buddydollyco.com">ryan.galen@buddydollyco.com</a></div>
+        </div>
+        <nav aria-label="Footer">
+          <a href="#meet">Meet Buddy</a>
+          <a href="#how">How it works</a>
+          <a href="distributors/">Become a Distributor</a>
+          <a href="#partners">Partners</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <p class="footer-small">© 2026 Buddy Dolly Company, LLC. Patent pending. Buddy is in development; design and features may change before release.</p>
     </div>
   </footer>
+
+  <script src="assets/site.js" defer></script>
 </body>
 </html>
