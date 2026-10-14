@@ -3,39 +3,29 @@
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // ---- Mode buttons follow the animation; clicking one holds that pose ----
+  // ---- Demo: caption and dots follow the animation; a dot holds that pose ----
   var video = document.getElementById('buddy-video');
-  var modes = Array.prototype.slice.call(document.querySelectorAll('.mode'));
-  var playBtn = document.querySelector('.play');
-  if (video && modes.length) {
-    var held = null;
-    if (reduce) { video.removeAttribute('autoplay'); video.pause(); }
-
+  var dots = Array.prototype.slice.call(document.querySelectorAll('.dot'));
+  var caption = document.querySelector('.caption');
+  if (video && dots.length) {
+    var held = null, resume = null;
+    if (reduce) { video.removeAttribute('autoplay'); video.pause(); held = dots[0]; }
     var paint = function () {
-      var t = video.currentTime;
-      modes.forEach(function (m) {
-        var from = +m.dataset.from, to = +m.dataset.to;
-        var on = held ? held === m : (t >= from && t < to);
-        m.setAttribute('aria-pressed', on ? 'true' : 'false');
-        var bar = m.querySelector('.bar');
-        if (bar) bar.style.width = held ? (on ? '100%' : '0') : (on ? Math.min(100, (t - from) / (to - from) * 100) + '%' : '0');
-      });
-      if (playBtn) playBtn.hidden = !video.paused;
+      var t = video.currentTime, current = held;
+      if (!current) dots.forEach(function (d) { if (t >= +d.dataset.from && t < +d.dataset.to) current = d; });
+      dots.forEach(function (d) { d.setAttribute('aria-pressed', d === current ? 'true' : 'false'); });
+      if (current && caption && caption.textContent !== current.dataset.caption) caption.textContent = current.dataset.caption;
     };
     var loop = function () { paint(); if (!video.paused) requestAnimationFrame(loop); };
-
-    modes.forEach(function (m) {
-      m.addEventListener('click', function () {
-        if (held === m) { held = null; video.play(); return; }
-        held = m;
-        video.pause();
-        video.currentTime = +m.dataset.hold;
-        paint();
+    dots.forEach(function (d) {
+      d.addEventListener('click', function () {
+        if (held === d && !reduce) { clearTimeout(resume); held = null; video.play(); return; }
+        held = d; video.pause(); video.currentTime = +d.dataset.hold; paint();
+        clearTimeout(resume);
+        if (!reduce) resume = setTimeout(function () { held = null; video.play(); }, 3500);
       });
     });
-    if (playBtn) playBtn.addEventListener('click', function () { held = null; video.play(); });
     video.addEventListener('play', function () { held = null; requestAnimationFrame(loop); });
-    video.addEventListener('pause', paint);
     video.addEventListener('seeked', paint);
     paint();
     if (!video.paused) requestAnimationFrame(loop);
